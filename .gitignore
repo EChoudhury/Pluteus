@@ -1,0 +1,13 @@
+# Build output
+/target/
+
+# Rust backup files
+*.rs.bk
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# IDE / editor settings
+.vscode/
+.idea/

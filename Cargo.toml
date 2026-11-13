@@ -1,0 +1,11 @@
+[package]
+name = "pluteus"
+version = "0.1.0"
+edition = "2021"
+description = "Pluteus — a calm, session-based writing app built with iced."
+license = "MIT"
+
+[dependencies]
+iced = { version = "0.13", features = ["tokio", "advanced"] }
+rfd = "0.15"
+tokio = { version = "1", features = ["fs"] }
