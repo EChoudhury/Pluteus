@@ -1,6 +1,6 @@
-# Pluteus
+# ![Feather](./assets/feather.svg) Pluteus
 
-A desktop writing app for focused, session-based writing, built with Rust, [iced](https://iced.rs) 0.13, tokio, and rfd.
+A desktop writing app for focused, session-based writing, built with Rust, [iced](https://iced.rs) 0.13, tokio, and rfd. Vibe-coded for your writing pleasure.
 
 ## Features
 

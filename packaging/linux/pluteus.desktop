@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Pluteus
+Comment=Session-based writing app
+Exec=pluteus
+Icon=pluteus
+Terminal=false
+Categories=Office;TextEditor;
+Keywords=writing;editor;markdown;text;

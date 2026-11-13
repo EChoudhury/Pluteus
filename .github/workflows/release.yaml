@@ -40,18 +40,33 @@ jobs:
       - name: Build release binary
         run: cargo build --release --locked --target ${{ matrix.target }}
 
-      - name: Package (Unix)
-        if: runner.os != 'Windows'
+      - name: Package (Linux)
+        if: runner.os == 'Linux'
         shell: bash
         run: |
           set -euo pipefail
           version="${GITHUB_REF_NAME}"
           name="pluteus-${version}-${{ matrix.target }}"
+          icons="target/${{ matrix.target }}/release/pluteus-icons"
           mkdir -p "dist/${name}"
           cp "target/${{ matrix.target }}/release/pluteus" "dist/${name}/"
+          cp "$icons/pluteus.png" "dist/${name}/"
+          cp packaging/linux/pluteus.desktop packaging/linux/install.sh "dist/${name}/"
+          chmod +x "dist/${name}/install.sh"
           cp README.md "dist/${name}/"
           cp assets/FiraSans-OFL.txt assets/Montserrat-OFL.txt "dist/${name}/"
           tar -C dist -czf "dist/${name}.tar.gz" "${name}"
+
+      - name: Package (macOS)
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="${GITHUB_REF_NAME#v}"
+          name="pluteus-${GITHUB_REF_NAME}-${{ matrix.target }}"
+          mkdir -p dist
+          bash packaging/macos/bundle.sh "target/${{ matrix.target }}/release/pluteus" "$version" "dist/Pluteus.app"
+          ditto -c -k --sequesterRsrc --keepParent "dist/Pluteus.app" "dist/${name}.zip"
 
       - name: Package (Windows)
         if: runner.os == 'Windows'
