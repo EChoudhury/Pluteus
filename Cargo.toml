@@ -9,3 +9,6 @@ license = "MIT"
 iced = { version = "0.13", features = ["tokio", "advanced"] }
 rfd = "0.15"
 tokio = { version = "1", features = ["fs"] }
+
+[build-dependencies]
+resvg = { version = "0.45", default-features = false }

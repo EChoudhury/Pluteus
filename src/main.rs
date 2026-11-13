@@ -13,14 +13,30 @@ use crate::types::{AppScreen, Message, SetupState, WriterState};
 /// Convenience alias for the application's widgets.
 type Element<'a> = iced::Element<'a, Message>;
 
+/// Size of the rasterized application icon (see `build.rs`).
+const ICON_SIZE: u32 = 256;
+
+/// RGBA pixels of the application icon, rasterized from `assets/feather.svg`.
+const ICON_RGBA: &[u8] = include_bytes!(concat!(env!("OUT_DIR"), "/feather_icon.rgba"));
+
+/// Builds the window icon from the embedded pixels.
+fn window_icon() -> iced::window::Icon {
+    iced::window::icon::from_rgba(ICON_RGBA.to_vec(), ICON_SIZE, ICON_SIZE)
+        .expect("the embedded application icon should be valid")
+}
+
 fn main() -> iced::Result {
     iced::application("Pluteus", Pluteus::update, Pluteus::view)
+        .window(iced::window::Settings {
+            size: iced::Size::new(1100.0, 800.0),
+            position: iced::window::Position::Centered,
+            icon: Some(window_icon()),
+            ..iced::window::Settings::default()
+        })
         .theme(Pluteus::theme)
         .subscription(Pluteus::subscription)
         .font(include_bytes!("../assets/FiraSans-Regular.ttf").as_slice())
         .font(include_bytes!("../assets/Montserrat-Regular.ttf").as_slice())
-        .window_size(iced::Size::new(1100.0, 800.0))
-        .centered()
         .antialiasing(true)
         .run()
 }
