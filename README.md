@@ -1,9 +1,18 @@
-# ![Feather](./assets/feather.svg) Pluteus
+<!-- # ![Feather](./assets/feather.svg) Pluteus -->
+<div align="center">
 
-A desktop writing app for focused, session-based writing, built with Rust, [iced](https://iced.rs) 0.13, tokio, and rfd. Vibe-coded for your writing pleasure.
+  [![latest version](https://img.shields.io/github/v/release/echoudhury/pluteus)](https://github.com/EChoudhury/Pluteus/releases)
+
+  <img width="150" alt="Pluteus logo" src="./assets/pluteus.png">
+  <h3>Pluteus</h3>
+  A desktop writing app for focused, session-based writing. Vibe-coded for your writing pleasure.
+  <br/><br/>
+  <!-- <img width="800" alt="FileBrowser Quantum file listing in dark mode" src="https://filebrowserquantum.com/images/generated/listing/view-mode-normal-dark.jpg"> -->
+</div>
 
 ## Features
 
+- Built with Rust, [iced](https://iced.rs) 0.13, tokio, and rfd.
 - Open an existing `.txt` / `.md` document, or create a blank one in a location of your choice.
 - Session goals: a countdown in minutes, or a number of newly written words.
 - Autosave: every 10 new words, after 10 seconds of inactivity, and when leaving the writer.
